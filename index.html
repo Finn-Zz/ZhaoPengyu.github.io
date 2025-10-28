@@ -1,168 +1,231 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>你的名字｜个人主页</title>
-  <meta name="description" content="你的名字的个人主页：研究、项目、论文与联系方式。" />
+  <title>Pengyu Zhao | Academic Homepage</title>
+  <meta name="description" content="Pengyu Zhao — research homepage: chemical engineering, computational materials, machine learning." />
   <meta name="color-scheme" content="light dark" />
   <style>
     :root{
       --bg: #0b0d12; /* dark bg */
       --fg: #e8ebf0; /* light text */
-      --muted: #99a2b2;
-      --card: #131722;
-      --accent: #6aa8ff;
-      --ring: rgba(106,168,255,.35);
+      --muted: #a8b0c0;
+      --card: #121623;
+      --accent: #5c8fff; /* calm academic blue */
+      --ring: rgba(92,143,255,.35);
+      --border: rgba(255,255,255,.10);
     }
     @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f7f9fc; --fg:#10131a; --muted:#556070; --card:#ffffff; --accent:#2563eb; --ring: rgba(37,99,235,.25);
-      }
+      :root{ --bg:#f8fafc; --fg:#0f1220; --muted:#51607a; --card:#ffffff; --accent:#1e40af; --ring:rgba(30,64,175,.20); --border:rgba(2,6,23,.08); }
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#0f1320);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#0f1422);color:var(--fg);font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial}
+    .serif{font-family: ui-serif, "Iowan Old Style", "Times New Roman", Times, Georgia, serif}
     a{color:var(--accent);text-decoration:none}
-    a:hover{opacity:.9;text-decoration:underline}
+    a:hover{text-decoration:underline}
     .wrap{max-width:1080px;margin:0 auto;padding:24px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0));backdrop-filter:saturate(160%) blur(6px);padding:12px 0;z-index:20}
-    .nav a{padding:8px 10px;border-radius:12px}
-    .badge{display:inline-flex;gap:8px;align-items:center;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:6px 10px;border-radius:999px}
 
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:36px 0}
-    .hero h1{font-size:44px;line-height:1.15;margin:10px 0}
+    /* Top nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0));backdrop-filter:saturate(160%) blur(6px);padding:12px 0;z-index:20}
+    .nav a{padding:8px 10px;border-radius:10px}
+    .brand{display:inline-flex;gap:10px;align-items:center;font-weight:700;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px 12px;border-radius:999px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{font-size:44px;line-height:1.12;margin:6px 0}
     .hero p{color:var(--muted);margin:0}
     .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--fg);box-shadow:0 6px 24px -8px var(--ring)}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:11px 15px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--fg);box-shadow:0 8px 28px -12px var(--ring)}
     .btn.primary{background:linear-gradient(180deg,var(--accent),#3b82f6);color:white;border-color:transparent}
 
+    /* Sections */
+    .section{margin:42px 0}
+    .section h2{font-size:26px;margin:0 0 12px}
+    .sub{color:var(--muted);margin:0 0 14px}
+
+    /* Cards & lists */
     .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
-    .card h3{margin:6px 0 8px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:16px;padding:16px}
+    .card h3{margin:6px 0 6px}
     .card p{margin:0;color:var(--muted)}
 
-    .section{margin:42px 0}
-    .section h2{font-size:26px;margin:0 0 16px}
+    .list{display:grid;gap:10px}
+    .item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
+    .k{min-width:110px;color:var(--muted)}
 
-    .list{display:grid;gap:12px}
-    .item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
-    .item .k{min-width:90px;color:var(--muted)}
+    /* Publications */
+    .paper{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .paper .title{font-weight:650}
+    .paper .meta{color:var(--muted);font-size:14px}
+    details{margin-top:8px}
+    code, pre{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:13px}
+    pre{background:rgba(127,127,127,.08);border:1px solid var(--border);border-radius:10px;padding:10px;overflow:auto}
 
+    /* Footer */
     .footer{margin:44px 0 24px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .card-grid{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width:640px){
-      .card-grid{grid-template-columns:1fr}
-      .hero h1{font-size:34px}
-    }
-    /* small embellishments */
-    .glow{position:absolute;inset:-60px -80px auto auto;width:360px;height:360px;border-radius:50%;filter:blur(60px);opacity:.35;background:radial-gradient(closest-side,var(--accent),transparent)}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-    .tag{font-size:12px;padding:4px 8px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:var(--muted)}
+    /* Responsive */
+    @media (max-width:900px){ .hero{grid-template-columns:1fr} .card-grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .card-grid{grid-template-columns:1fr} .hero h1{font-size:34px} }
+
+    /* Subtle glow */
+    .glow{position:absolute;inset:-60px -80px auto auto;width:360px;height:360px;border-radius:50%;filter:blur(60px);opacity:.30;background:radial-gradient(closest-side,var(--accent),transparent)}
+    .tag{font-size:12px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="nav">
-      <div class="badge">👋 <span class="mono">你的名字</span></div>
+      <div class="brand serif">📘 <span>Pengyu Zhao</span></div>
       <nav style="display:flex;gap:6px;flex-wrap:wrap">
-        <a href="#about">关于我</a>
-        <a href="#projects">项目</a>
-        <a href="#pubs">论文</a>
-        <a href="#contact">联系</a>
-        <a href="/resume.pdf" target="_blank" rel="noreferrer">简历</a>
+        <a href="#research">Research</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#talks">Talks</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#service">Service</a>
+        <a href="#contact">Contact</a>
+        <a href="/CV_PengyuZhao.pdf" target="_blank" rel="noreferrer">CV</a>
       </nav>
     </div>
 
     <section class="hero">
       <div>
         <div class="glow" aria-hidden></div>
-        <h1>你好，我是 <span class="mono">你的名字</span>。<br>化工 × 计算 × AI</h1>
-        <p>一句简短的自我介绍：当前所在学校/团队，研究方向关键词（如 MOF、Transformer、催化、交通运输工程等）。可加上你在做的一个目标或成果。</p>
+        <h1 class="serif">Pengyu Zhao</h1>
+        <p>Chemical Engineering × Computational Materials × Machine Learning</p>
+        <p class="sub">I study data‐driven discovery for nanoporous materials (e.g., MOFs), with a focus on 
+          structure quality assessment (CR vs. NCR), interpretable multi‑modal models, and robust charge prediction.
+        </p>
         <div class="cta">
-          <a class="btn primary" href="#projects">查看项目</a>
-          <a class="btn" href="#contact">联系我</a>
+          <a class="btn primary" href="#publications">Selected publications</a>
+          <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
       <div>
         <div class="card-grid">
           <div class="card">
-            <span class="tag">研究方向</span>
-            <h3>MOF 分类与解释</h3>
-            <p>示例：多模态 Transformer（晶体图+能量网格）、错误类型可视化、PACMAN 电荷。</p>
+            <span class="tag">Research Interests</span>
+            <h3 class="serif">MOF Quality & Interpretability</h3>
+            <p>CR/NCR classification, error taxonomy (H‑overlap, charge, disorder), attention visualization.</p>
           </div>
           <div class="card">
-            <span class="tag">工具链</span>
-            <h3>Python / PyTorch</h3>
-            <p>数据管线、评估与可视化脚本、学术图像风格化。</p>
+            <span class="tag">Tooling</span>
+            <h3 class="serif">Python / PyTorch</h3>
+            <p>Data pipelines, evaluation & plotting, multi‑modal Transformers (graphs + energy grids).</p>
           </div>
           <div class="card">
-            <span class="tag">课程/兴趣</span>
-            <h3>电池 / 催化 / 交通</h3>
-            <p>课堂笔记与作业展示，含公式、图表与报告链接。</p>
+            <span class="tag">Open to</span>
+            <h3 class="serif">Collaboration</h3>
+            <p>Academic/industry projects on interpretable ML for materials & catalysis.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <h2>关于我</h2>
+    <section id="research" class="section">
+      <h2 class="serif">Research Overview</h2>
       <div class="list">
-        <div class="item"><div class="k">当前</div><div>在 <strong>某某大学/研究所</strong> 攻读/工作，专注化工+计算+AI 的交叉研究。</div></div>
-        <div class="item"><div class="k">研究</div><div>MOF 结构 CR/NCR 分类、多任务学习、注意力可解释性、PU 学习等。</div></div>
-        <div class="item"><div class="k">开源</div><div><a href="#projects">项目</a> 与 <a href="#pubs">论文/笔记</a>，欢迎交流合作。</div></div>
+        <div class="item"><div class="k">Now</div><div>Graduate research on computation‑ready MOF curation, multi‑task learning, and interpretable classification.</div></div>
+        <div class="item"><div class="k">Methods</div><div>Transformer architectures with local (crystal graphs) and global (energy grids) channels; PU learning; robust partial atomic charges.</div></div>
+        <div class="item"><div class="k">Keywords</div><div>MOF, CR/NCR, interpretability, attention maps, PACMAN, materials informatics.</div></div>
+      </div>
+    </section>
+
+    <section id="news" class="section">
+      <h2 class="serif">News</h2>
+      <ul class="list" style="list-style: disc inside">
+        <li><strong>Oct 2025</strong> — Poster on MOFClassifier accepted; releasing code for error‑aware evaluation.</li>
+        <li><strong>Sep 2025</strong> — Built a pipeline for attention visualization over crystal graphs & grids.</li>
+      </ul>
+    </section>
+
+    <section id="publications" class="section">
+      <h2 class="serif">Selected Publications</h2>
+      <div class="paper">
+        <div class="title">PACMAN: A Robust Partial Atomic Charge Predictor for Nanoporous Materials</div>
+        <div class="meta">J. Chem. Theory Comput., 2024. (with Guobin Zhao & Y. G. Chung)</div>
+        <details>
+          <summary>BibTeX</summary>
+          <pre>@article{zhao2024pacman,
+  title={PACMAN: A Robust Partial Atomic Charge Predictor for Nanoporous Materials},
+  journal={J. Chem. Theory Comput.},
+  year={2024},
+  author={Zhao, Guobin and Chung, Yong‐Gyun}
+}</pre>
+        </details>
+      </div>
+      <div class="paper" style="margin-top:10px">
+        <div class="title">MOFClassifier: Computation‑Ready vs. Not‑Ready Classification with Error Taxonomy</div>
+        <div class="meta">Under preparation. Code & poster available.</div>
+        <details>
+          <summary>Abstract</summary>
+          <p>We propose a multi‑modal Transformer that integrates crystal graphs and energy grids with error‑aware labels to improve interpretability and robustness for CR/NCR decisions.</p>
+        </details>
       </div>
     </section>
 
     <section id="projects" class="section">
-      <h2>精选项目</h2>
+      <h2 class="serif">Projects</h2>
       <div class="card-grid">
         <article class="card">
-          <h3>MOFClassifier (Poster)</h3>
-          <p>CR/NCR 二分类与错误类型解释，支持 ROC、混淆矩阵与注意力可视化。</p>
-          <p><a href="#">GitHub</a> · <a href="#">海报/Slides</a></p>
+          <h3 class="serif">MOFClassifier (Poster)</h3>
+          <p>Binary CR/NCR with error types; ROC, confusion matrix, attention overlays.</p>
+          <p><a href="#">GitHub</a> · <a href="#">Poster/Slides</a></p>
         </article>
         <article class="card">
-          <h3>MOFTransformer 改造</h3>
-          <p>整合局部/全局特征、错误标签与 PACMAN 电荷，改进可解释性。</p>
+          <h3 class="serif">MOFTransformer Extensions</h3>
+          <p>Unified local/global features, PACMAN charges, error labels for interpretability.</p>
           <p><a href="#">GitHub</a></p>
         </article>
         <article class="card">
-          <h3>课程作业与报告</h3>
-          <p>BET 面积、BJH 分布、Ni/SiO₂ 结构敏感性复现与讲解。</p>
+          <h3 class="serif">Course Notes & Reports</h3>
+          <p>BET area, BJH distribution, Ni/SiO₂ structure sensitivity, battery fundamentals.</p>
           <p><a href="#">PDF</a></p>
         </article>
       </div>
     </section>
 
-    <section id="pubs" class="section">
-      <h2>论文与发表</h2>
-      <ol class="list" style="list-style: decimal inside">
-        <li>
-          <strong>论文标题 1</strong> · <em>期刊/会议, 年份</em> · <a href="#">DOI/PDF</a>
-        </li>
-        <li>
-          <strong>论文标题 2</strong> · <em>期刊/会议, 年份</em> · <a href="#">DOI/PDF</a>
-        </li>
-      </ol>
+    <section id="talks" class="section">
+      <h2 class="serif">Talks & Posters</h2>
+      <ul class="list" style="list-style: disc inside">
+        <li>MOFClassifier: Error‑Aware CR/NCR Classification — <em>KCS Changwon</em>, Oct 2025.</li>
+      </ul>
+    </section>
+
+    <section id="teaching" class="section">
+      <h2 class="serif">Teaching</h2>
+      <div class="list">
+        <div class="item"><div class="k">TA / Guest</div><div>Advanced Battery Engineering (lab demos & problem sessions).</div></div>
+      </div>
+    </section>
+
+    <section id="service" class="section">
+      <h2 class="serif">Service & Awards</h2>
+      <div class="list">
+        <div class="item"><div class="k">Reviewer</div><div>Materials informatics venues (student reviewer).</div></div>
+        <div class="item"><div class="k">Awards</div><div>Poster award (MOFClassifier), Travel grants.</div></div>
+      </div>
     </section>
 
     <section id="contact" class="section">
-      <h2>联系我</h2>
+      <h2 class="serif">Contact</h2>
       <div class="list">
-        <div class="item"><div class="k">邮箱</div><div><a href="mailto:your.name@email.com">your.name@email.com</a></div></div>
-        <div class="item"><div class="k">学术</div><div><a href="#">Google Scholar</a> · <a href="#">ORCID</a></div></div>
-        <div class="item"><div class="k">社交</div><div><a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">X</a></div></div>
+        <div class="item"><div class="k">Email</div><div><a href="mailto:pengyu@example.com">pengyu@example.com</a></div></div>
+        <div class="item"><div class="k">Profiles</div><div>
+          <a href="#">Google Scholar</a> · <a href="#">ORCID</a> · <a href="#">GitHub</a> · <a href="#">LinkedIn</a>
+        </div></div>
+        <div class="item"><div class="k">CV</div><div><a href="/CV_PengyuZhao.pdf" target="_blank" rel="noreferrer">Download</a></div></div>
       </div>
     </section>
 
     <footer class="footer">
-      <div>© <span id="year"></span> 你的名字</div>
-      <div><a href="#">返回顶部 ↑</a></div>
+      <div>© <span id="year"></span> Pengyu Zhao</div>
+      <div><a href="#">Back to top ↑</a></div>
     </footer>
   </div>
 
