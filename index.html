@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>你的名字｜个人主页</title>
+  <meta name="description" content="你的名字的个人主页：研究、项目、论文与联系方式。" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0d12; /* dark bg */
+      --fg: #e8ebf0; /* light text */
+      --muted: #99a2b2;
+      --card: #131722;
+      --accent: #6aa8ff;
+      --ring: rgba(106,168,255,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7f9fc; --fg:#10131a; --muted:#556070; --card:#ffffff; --accent:#2563eb; --ring: rgba(37,99,235,.25);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#0f1320);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{opacity:.9;text-decoration:underline}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0));backdrop-filter:saturate(160%) blur(6px);padding:12px 0;z-index:20}
+    .nav a{padding:8px 10px;border-radius:12px}
+    .badge{display:inline-flex;gap:8px;align-items:center;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:6px 10px;border-radius:999px}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{font-size:44px;line-height:1.15;margin:10px 0}
+    .hero p{color:var(--muted);margin:0}
+    .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--fg);box-shadow:0 6px 24px -8px var(--ring)}
+    .btn.primary{background:linear-gradient(180deg,var(--accent),#3b82f6);color:white;border-color:transparent}
+
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
+    .card h3{margin:6px 0 8px}
+    .card p{margin:0;color:var(--muted)}
+
+    .section{margin:42px 0}
+    .section h2{font-size:26px;margin:0 0 16px}
+
+    .list{display:grid;gap:12px}
+    .item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
+    .item .k{min-width:90px;color:var(--muted)}
+
+    .footer{margin:44px 0 24px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .card-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .card-grid{grid-template-columns:1fr}
+      .hero h1{font-size:34px}
+    }
+    /* small embellishments */
+    .glow{position:absolute;inset:-60px -80px auto auto;width:360px;height:360px;border-radius:50%;filter:blur(60px);opacity:.35;background:radial-gradient(closest-side,var(--accent),transparent)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .tag{font-size:12px;padding:4px 8px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="badge">👋 <span class="mono">你的名字</span></div>
+      <nav style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="#about">关于我</a>
+        <a href="#projects">项目</a>
+        <a href="#pubs">论文</a>
+        <a href="#contact">联系</a>
+        <a href="/resume.pdf" target="_blank" rel="noreferrer">简历</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div>
+        <div class="glow" aria-hidden></div>
+        <h1>你好，我是 <span class="mono">你的名字</span>。<br>化工 × 计算 × AI</h1>
+        <p>一句简短的自我介绍：当前所在学校/团队，研究方向关键词（如 MOF、Transformer、催化、交通运输工程等）。可加上你在做的一个目标或成果。</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">查看项目</a>
+          <a class="btn" href="#contact">联系我</a>
+        </div>
+      </div>
+      <div>
+        <div class="card-grid">
+          <div class="card">
+            <span class="tag">研究方向</span>
+            <h3>MOF 分类与解释</h3>
+            <p>示例：多模态 Transformer（晶体图+能量网格）、错误类型可视化、PACMAN 电荷。</p>
+          </div>
+          <div class="card">
+            <span class="tag">工具链</span>
+            <h3>Python / PyTorch</h3>
+            <p>数据管线、评估与可视化脚本、学术图像风格化。</p>
+          </div>
+          <div class="card">
+            <span class="tag">课程/兴趣</span>
+            <h3>电池 / 催化 / 交通</h3>
+            <p>课堂笔记与作业展示，含公式、图表与报告链接。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>关于我</h2>
+      <div class="list">
+        <div class="item"><div class="k">当前</div><div>在 <strong>某某大学/研究所</strong> 攻读/工作，专注化工+计算+AI 的交叉研究。</div></div>
+        <div class="item"><div class="k">研究</div><div>MOF 结构 CR/NCR 分类、多任务学习、注意力可解释性、PU 学习等。</div></div>
+        <div class="item"><div class="k">开源</div><div><a href="#projects">项目</a> 与 <a href="#pubs">论文/笔记</a>，欢迎交流合作。</div></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>精选项目</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>MOFClassifier (Poster)</h3>
+          <p>CR/NCR 二分类与错误类型解释，支持 ROC、混淆矩阵与注意力可视化。</p>
+          <p><a href="#">GitHub</a> · <a href="#">海报/Slides</a></p>
+        </article>
+        <article class="card">
+          <h3>MOFTransformer 改造</h3>
+          <p>整合局部/全局特征、错误标签与 PACMAN 电荷，改进可解释性。</p>
+          <p><a href="#">GitHub</a></p>
+        </article>
+        <article class="card">
+          <h3>课程作业与报告</h3>
+          <p>BET 面积、BJH 分布、Ni/SiO₂ 结构敏感性复现与讲解。</p>
+          <p><a href="#">PDF</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pubs" class="section">
+      <h2>论文与发表</h2>
+      <ol class="list" style="list-style: decimal inside">
+        <li>
+          <strong>论文标题 1</strong> · <em>期刊/会议, 年份</em> · <a href="#">DOI/PDF</a>
+        </li>
+        <li>
+          <strong>论文标题 2</strong> · <em>期刊/会议, 年份</em> · <a href="#">DOI/PDF</a>
+        </li>
+      </ol>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>联系我</h2>
+      <div class="list">
+        <div class="item"><div class="k">邮箱</div><div><a href="mailto:your.name@email.com">your.name@email.com</a></div></div>
+        <div class="item"><div class="k">学术</div><div><a href="#">Google Scholar</a> · <a href="#">ORCID</a></div></div>
+        <div class="item"><div class="k">社交</div><div><a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">X</a></div></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> 你的名字</div>
+      <div><a href="#">返回顶部 ↑</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+Commit message: add homepage
