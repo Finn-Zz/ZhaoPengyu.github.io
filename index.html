@@ -70,6 +70,11 @@
     /* Responsive */
     @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid{grid-template-columns:1fr 1fr} }
     @media (max-width:640px){ .grid{grid-template-columns:1fr} .hero h1{font-size:34px} }
+    /* Avatar card */
+    .avatar-card{text-align:center}
+    .avatar{display:flex;justify-content:center;align-items:center;margin:6px 0 10px}
+    .avatar img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:1px solid var(--border);box-shadow:var(--shadow)}
+    #avatar-input{display:inline-block;margin-top:6px}
   </style>
 </head>
 <body>
@@ -80,7 +85,8 @@
         <a href="#research">Research</a>
         <a href="#news">News</a>
         <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
+        $1
+        <a href="#education">Education</a>
         <a href="#talks">Talks</a>
         <a href="#teaching">Teaching</a>
         <a href="#service">Service</a>
@@ -92,7 +98,7 @@
     <section class="hero">
       <div>
         <h1>Pengyu Zhao</h1>
-        <p><strong>Chemical Engineering · Machine Learning</strong></p>
+        <p><strong>Chemical Engineering · Computational Materials · Machine Learning</strong></p>
         <p class="sub">I'm a master's student at Pusan ​​National University, majoring in Chemical Engineering. Welcome to my website.</p>
         <div class="badges">
           <span class="badge">MOFs</span>
@@ -106,20 +112,15 @@
         </div>
       </div>
       <div>
-        <div class="grid">
-          <div class="card">
-            <h3>MOF Quality & Interpretability</h3>
-            <p>CR/NCR classification, error taxonomy (H‑overlap, charge, disorder), attention visualization.</p>
+        <div class="card avatar-card">
+          <h3>Profile Photo</h3>
+          <div class="avatar">
+            <img id="avatar-img" src="avatar.jpg" alt="Portrait of Pengyu Zhao">
           </div>
-          <div class="card">
-            <h3>Multi‑modal Models</h3>
-            <p>Local crystal graphs + global energy grids; robust partial atomic charges.</p>
-          </div>
-          <div class="card">
-            <h3>Tooling</h3>
-            <p>Python · PyTorch · Data pipelines · Evaluation & plotting.</p>
-          </div>
+          <p class="sub">Upload to preview locally. For a permanent photo, add <code>avatar.jpg</code> (or update the src) to the repository.</p>
+          <input id="avatar-input" type="file" accept="image/*">
         </div>
+      </div>
       </div>
     </section>
 
@@ -129,6 +130,14 @@
         <div class="item"><div class="k">Now</div><div>Graduate research on computation‑ready MOF curation, multi‑task learning, and interpretable classification.</div></div>
         <div class="item"><div class="k">Methods</div><div>Transformer architectures with local (crystal graphs) and global (energy grids) channels; PU learning; robust partial atomic charges.</div></div>
         <div class="item"><div class="k">Keywords</div><div>MOF, CR/NCR, interpretability, attention maps, PACMAN, materials informatics.</div></div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="list">
+        <div class="item"><div class="k">2023–Present</div><div>M.S./Ph.D. in Chemical Engineering, [University], Advisor: [Name].</div></div>
+        <div class="item"><div class="k">2019–2023</div><div>B.S. in [Major], [University].</div></div>
       </div>
     </section>
 
@@ -227,6 +236,29 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Avatar preview (local only). Persists in this browser via localStorage.
+    (function(){
+      var input = document.getElementById('avatar-input');
+      var img = document.getElementById('avatar-img');
+      if(!img) return;
+      try{
+        var saved = localStorage.getItem('avatarDataURL');
+        if(saved) img.src = saved;
+      }catch(e){}
+      if(input){
+        input.addEventListener('change', function(e){
+          var file = e.target.files && e.target.files[0];
+          if(!file) return;
+          var reader = new FileReader();
+          reader.onload = function(ev){
+            img.src = ev.target.result;
+            try{ localStorage.setItem('avatarDataURL', ev.target.result); }catch(e){}
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    })();
   </script>
 </body>
 </html>
