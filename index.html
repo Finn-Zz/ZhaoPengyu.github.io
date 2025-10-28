@@ -5,81 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pengyu Zhao | Academic Homepage</title>
   <meta name="description" content="Pengyu Zhao — research homepage: chemical engineering, computational materials, machine learning." />
-  <meta name="color-scheme" content="light dark" />
   <style>
+    /* ===== Bright, simple, no dark mode ===== */
     :root{
-      --bg: #0b0d12; /* dark bg */
-      --fg: #e8ebf0; /* light text */
-      --muted: #a8b0c0;
-      --card: #121623;
-      --accent: #5c8fff; /* calm academic blue */
-      --ring: rgba(92,143,255,.35);
-      --border: rgba(255,255,255,.10);
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f8fafc; --fg:#0f1220; --muted:#51607a; --card:#ffffff; --accent:#1e40af; --ring:rgba(30,64,175,.20); --border:rgba(2,6,23,.08); }
+      --bg:#ffffff;       /* page background */
+      --surface:#ffffff;  /* cards / sections */
+      --text:#111827;     /* main text */
+      --muted:#6b7280;    /* secondary text */
+      --border:#e5e7eb;   /* light borders */
+      --accent:#2563eb;   /* bright but academic blue */
+      --accent-weak:#eff6ff; /* pale blue background */
+      --radius:14px;
+      --shadow:0 6px 24px rgba(0,0,0,.06);
+      --space:22px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#0f1422);color:var(--fg);font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial}
-    .serif{font-family: ui-serif, "Iowan Old Style", "Times New Roman", Times, Georgia, serif}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px}
 
-    /* Top nav */
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0));backdrop-filter:saturate(160%) blur(6px);padding:12px 0;z-index:20}
+    /* Top bar — flat, bright */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:10}
+    .brand{font-weight:750}
     .nav a{padding:8px 10px;border-radius:10px}
-    .brand{display:inline-flex;gap:10px;align-items:center;font-weight:700;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px 12px;border-radius:999px}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;padding:36px 0}
-    .hero h1{font-size:44px;line-height:1.12;margin:6px 0}
-    .hero p{color:var(--muted);margin:0}
-    .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:11px 15px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--fg);box-shadow:0 8px 28px -12px var(--ring)}
-    .btn.primary{background:linear-gradient(180deg,var(--accent),#3b82f6);color:white;border-color:transparent}
+    /* Hero — clean and airy */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
+    .hero h1{font-size:42px;line-height:1.15;margin:6px 0 10px}
+    .hero p{margin:6px 0;color:var(--muted)}
+    .hero .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .badge{font-size:13px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:#fff}
+    .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 
     /* Sections */
-    .section{margin:42px 0}
-    .section h2{font-size:26px;margin:0 0 12px}
-    .sub{color:var(--muted);margin:0 0 14px}
+    .section{margin:34px 0}
+    .section h2{font-size:24px;margin:0 0 10px}
+    .sub{color:var(--muted);margin:0 0 12px}
 
-    /* Cards & lists */
-    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:16px;padding:16px}
-    .card h3{margin:6px 0 6px}
+    /* Cards & simple lists */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 4px;font-size:18px}
     .card p{margin:0;color:var(--muted)}
 
     .list{display:grid;gap:10px}
-    .item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
-    .k{min-width:110px;color:var(--muted)}
+    .item{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--surface)}
+    .k{min-width:100px;color:var(--muted)}
 
-    /* Publications */
-    .paper{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
-    .paper .title{font-weight:650}
-    .paper .meta{color:var(--muted);font-size:14px}
-    details{margin-top:8px}
-    code, pre{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:13px}
-    pre{background:rgba(127,127,127,.08);border:1px solid var(--border);border-radius:10px;padding:10px;overflow:auto}
+    /* Publications — very lightweight */
+    .paper{border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--surface)}
+    .title{font-weight:650}
+    .meta{color:var(--muted);font-size:14px}
+    details{margin-top:8px;background:var(--accent-weak);border:1px solid #dbeafe;border-radius:10px;padding:8px}
+    pre{margin:6px 0 0;background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px;overflow:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
 
     /* Footer */
-    .footer{margin:44px 0 24px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .footer{margin:36px 0 18px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--border);padding-top:12px}
 
     /* Responsive */
-    @media (max-width:900px){ .hero{grid-template-columns:1fr} .card-grid{grid-template-columns:1fr 1fr} }
-    @media (max-width:640px){ .card-grid{grid-template-columns:1fr} .hero h1{font-size:34px} }
-
-    /* Subtle glow */
-    .glow{position:absolute;inset:-60px -80px auto auto;width:360px;height:360px;border-radius:50%;filter:blur(60px);opacity:.30;background:radial-gradient(closest-side,var(--accent),transparent)}
-    .tag{font-size:12px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
+    @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} .hero h1{font-size:34px} }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="nav">
-      <div class="brand serif">📘 <span>Pengyu Zhao</span></div>
+      <div class="brand">Pengyu Zhao</div>
       <nav style="display:flex;gap:6px;flex-wrap:wrap">
         <a href="#research">Research</a>
         <a href="#news">News</a>
@@ -95,40 +91,40 @@
 
     <section class="hero">
       <div>
-        <div class="glow" aria-hidden></div>
-        <h1 class="serif">Pengyu Zhao</h1>
-        <p>Chemical Engineering × Computational Materials × Machine Learning</p>
-        <p class="sub">I study data‐driven discovery for nanoporous materials (e.g., MOFs), with a focus on 
-          structure quality assessment (CR vs. NCR), interpretable multi‑modal models, and robust charge prediction.
-        </p>
+        <h1>Pengyu Zhao</h1>
+        <p><strong>Chemical Engineering · Computational Materials · Machine Learning</strong></p>
+        <p class="sub">I study data‑driven discovery for nanoporous materials (e.g., MOFs), focusing on structure quality assessment (CR vs. NCR), interpretable multi‑modal models, and robust charge prediction.</p>
+        <div class="badges">
+          <span class="badge">MOFs</span>
+          <span class="badge">Interpretability</span>
+          <span class="badge">Transformers</span>
+          <span class="badge">PU Learning</span>
+        </div>
         <div class="cta">
           <a class="btn primary" href="#publications">Selected publications</a>
           <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
       <div>
-        <div class="card-grid">
+        <div class="grid">
           <div class="card">
-            <span class="tag">Research Interests</span>
-            <h3 class="serif">MOF Quality & Interpretability</h3>
+            <h3>MOF Quality & Interpretability</h3>
             <p>CR/NCR classification, error taxonomy (H‑overlap, charge, disorder), attention visualization.</p>
           </div>
           <div class="card">
-            <span class="tag">Tooling</span>
-            <h3 class="serif">Python / PyTorch</h3>
-            <p>Data pipelines, evaluation & plotting, multi‑modal Transformers (graphs + energy grids).</p>
+            <h3>Multi‑modal Models</h3>
+            <p>Local crystal graphs + global energy grids; robust partial atomic charges.</p>
           </div>
           <div class="card">
-            <span class="tag">Open to</span>
-            <h3 class="serif">Collaboration</h3>
-            <p>Academic/industry projects on interpretable ML for materials & catalysis.</p>
+            <h3>Tooling</h3>
+            <p>Python · PyTorch · Data pipelines · Evaluation & plotting.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="research" class="section">
-      <h2 class="serif">Research Overview</h2>
+      <h2>Research Overview</h2>
       <div class="list">
         <div class="item"><div class="k">Now</div><div>Graduate research on computation‑ready MOF curation, multi‑task learning, and interpretable classification.</div></div>
         <div class="item"><div class="k">Methods</div><div>Transformer architectures with local (crystal graphs) and global (energy grids) channels; PU learning; robust partial atomic charges.</div></div>
@@ -137,7 +133,7 @@
     </section>
 
     <section id="news" class="section">
-      <h2 class="serif">News</h2>
+      <h2>News</h2>
       <ul class="list" style="list-style: disc inside">
         <li><strong>Oct 2025</strong> — Poster on MOFClassifier accepted; releasing code for error‑aware evaluation.</li>
         <li><strong>Sep 2025</strong> — Built a pipeline for attention visualization over crystal graphs & grids.</li>
@@ -145,7 +141,7 @@
     </section>
 
     <section id="publications" class="section">
-      <h2 class="serif">Selected Publications</h2>
+      <h2>Selected Publications</h2>
       <div class="paper">
         <div class="title">PACMAN: A Robust Partial Atomic Charge Predictor for Nanoporous Materials</div>
         <div class="meta">J. Chem. Theory Comput., 2024. (with Guobin Zhao & Y. G. Chung)</div>
@@ -170,20 +166,20 @@
     </section>
 
     <section id="projects" class="section">
-      <h2 class="serif">Projects</h2>
-      <div class="card-grid">
+      <h2>Projects</h2>
+      <div class="grid">
         <article class="card">
-          <h3 class="serif">MOFClassifier (Poster)</h3>
+          <h3>MOFClassifier (Poster)</h3>
           <p>Binary CR/NCR with error types; ROC, confusion matrix, attention overlays.</p>
           <p><a href="#">GitHub</a> · <a href="#">Poster/Slides</a></p>
         </article>
         <article class="card">
-          <h3 class="serif">MOFTransformer Extensions</h3>
+          <h3>MOFTransformer Extensions</h3>
           <p>Unified local/global features, PACMAN charges, error labels for interpretability.</p>
           <p><a href="#">GitHub</a></p>
         </article>
         <article class="card">
-          <h3 class="serif">Course Notes & Reports</h3>
+          <h3>Course Notes & Reports</h3>
           <p>BET area, BJH distribution, Ni/SiO₂ structure sensitivity, battery fundamentals.</p>
           <p><a href="#">PDF</a></p>
         </article>
@@ -191,21 +187,21 @@
     </section>
 
     <section id="talks" class="section">
-      <h2 class="serif">Talks & Posters</h2>
+      <h2>Talks & Posters</h2>
       <ul class="list" style="list-style: disc inside">
         <li>MOFClassifier: Error‑Aware CR/NCR Classification — <em>KCS Changwon</em>, Oct 2025.</li>
       </ul>
     </section>
 
     <section id="teaching" class="section">
-      <h2 class="serif">Teaching</h2>
+      <h2>Teaching</h2>
       <div class="list">
         <div class="item"><div class="k">TA / Guest</div><div>Advanced Battery Engineering (lab demos & problem sessions).</div></div>
       </div>
     </section>
 
     <section id="service" class="section">
-      <h2 class="serif">Service & Awards</h2>
+      <h2>Service & Awards</h2>
       <div class="list">
         <div class="item"><div class="k">Reviewer</div><div>Materials informatics venues (student reviewer).</div></div>
         <div class="item"><div class="k">Awards</div><div>Poster award (MOFClassifier), Travel grants.</div></div>
@@ -213,7 +209,7 @@
     </section>
 
     <section id="contact" class="section">
-      <h2 class="serif">Contact</h2>
+      <h2>Contact</h2>
       <div class="list">
         <div class="item"><div class="k">Email</div><div><a href="mailto:pengyu@example.com">pengyu@example.com</a></div></div>
         <div class="item"><div class="k">Profiles</div><div>
