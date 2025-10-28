@@ -74,7 +74,7 @@
     .avatar-card{text-align:center}
     .avatar{display:flex;justify-content:center;align-items:center;margin:6px 0 10px}
     .avatar img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:1px solid var(--border);box-shadow:var(--shadow)}
-    #avatar-input{display:inline-block;margin-top:6px}
+    
   </style>
 </head>
 <body>
@@ -85,7 +85,7 @@
         <a href="#research">Research</a>
         <a href="#news">News</a>
         <a href="#publications">Publications</a>
-        $1
+        
         <a href="#education">Education</a>
         <a href="#talks">Talks</a>
         <a href="#teaching">Teaching</a>
@@ -117,10 +117,8 @@
           <div class="avatar">
             <img id="avatar-img" src="avatar.jpg" alt="Portrait of Pengyu Zhao">
           </div>
-          <p class="sub">Upload to preview locally. For a permanent photo, add <code>avatar.jpg</code> (or update the src) to the repository.</p>
-          <input id="avatar-input" type="file" accept="image/*">
+          <p class="sub">To set your portrait, commit an image named <code>avatar.jpg</code> to the repository (or update the <code>src</code> above). Visitors cannot change it.</p>
         </div>
-      </div>
       </div>
     </section>
 
@@ -237,28 +235,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Avatar preview (local only). Persists in this browser via localStorage.
-    (function(){
-      var input = document.getElementById('avatar-input');
-      var img = document.getElementById('avatar-img');
-      if(!img) return;
-      try{
-        var saved = localStorage.getItem('avatarDataURL');
-        if(saved) img.src = saved;
-      }catch(e){}
-      if(input){
-        input.addEventListener('change', function(e){
-          var file = e.target.files && e.target.files[0];
-          if(!file) return;
-          var reader = new FileReader();
-          reader.onload = function(ev){
-            img.src = ev.target.result;
-            try{ localStorage.setItem('avatarDataURL', ev.target.result); }catch(e){}
-          };
-          reader.readAsDataURL(file);
-        });
-      }
-    })();
+    
   </script>
 </body>
 </html>
